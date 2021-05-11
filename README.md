@@ -16,7 +16,6 @@
 ### Association
 - has_many :products
 - has_one :buyer
-- has_one :card
 
 ## products テーブル
 
@@ -46,18 +45,6 @@ belongs_to :user
 | building name | string     |                                |
 | phone number  | integer    | null: false                    |
 | user          | references | null: false, foreign_key: true |
-
-### Association
-belongs_to :user
-
-## cards テーブル
-
-| Column          | Type       | Options                        |
-| --------------- | ---------- | ------------------------------ |
-| number          | integer    | null: false                    |
-| expiration date | integer    | null: false                    |
-| security_code   | integer    | null: false                    |
-| user            | references | null: false, foreign_key: true |
 
 ### Association
 belongs_to :user
