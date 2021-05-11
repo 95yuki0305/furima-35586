@@ -15,7 +15,6 @@
 
 ### Association
 - has_many :product_user
-- has_many :address
 
 ## products テーブル
 
