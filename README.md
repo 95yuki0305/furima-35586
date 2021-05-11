@@ -45,7 +45,7 @@ has_many :product_user
 
 - belongs_to :product
 - belongs_to :user
-- belongs_to :address
+- has_one :address
 
 ## address テーブル
 
@@ -61,4 +61,4 @@ has_many :product_user
 
 ### Association
 belongs_to :user
-has_many :product_users
+belongs_to :product_user
