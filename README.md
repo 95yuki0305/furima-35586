@@ -14,7 +14,7 @@
 | birthday           | date    | null: false               |
 
 ### Association
-- has_many :products, through:product_users
+- has_many :product_user
 - has_many :address
 
 ## products テーブル
@@ -35,7 +35,7 @@
 belongs_to :user
 has_many :users, through:product_users
 
-## products_user テーブル
+## product_user テーブル
 
 | Column    | Type       | Options                        |
 | --------- | ---------- | ------------------------------ |
