@@ -32,7 +32,7 @@
 
 ### Association
 belongs_to :user
-has_many :users, through:product_users
+has_many :product_user
 
 ## product_user テーブル
 
