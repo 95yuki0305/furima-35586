@@ -33,6 +33,7 @@
 
 ### Association
 belongs_to :user
+has_many :product_users
 
 ## buyers テーブル
 
