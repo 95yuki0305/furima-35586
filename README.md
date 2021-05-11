@@ -7,10 +7,10 @@
 | nickname         | string  | null: false |
 | email            | string  | null: false |
 | password         | string  | null: false |
-| family name      | string  | null: false |
-| first name       | string  | null: false |
-| family name ruby | string  | null: false |
-| first name ruby  | string  | null: false |
+| family_name      | string  | null: false |
+| first_name       | string  | null: false |
+| family_name_ruby | string  | null: false |
+| first_name_ruby  | string  | null: false |
 | birthday         | integer | null: false |
 
 ### Association
@@ -25,10 +25,10 @@
 | description      | text       | null: false                    |
 | category         | string     | null: false                    |
 | status           | string     | null: false                    |
-| shipping charges | string     | null: false                    |
-| shipping area    | string     | null: false                    |
-| days to ship     | string     | null: false                    |
-| selling price    | integer    | null: false                    |
+| shipping_charges | string     | null: false                    |
+| shipping_area    | string     | null: false                    |
+| days_to_ship     | string     | null: false                    |
+| selling_price    | integer    | null: false                    |
 | user             | references | null: false, foreign_key: true |
 
 ### Association
@@ -38,12 +38,12 @@ belongs_to :user
 
 | Column        | Type       | Options                        |
 | ------------- | ---------- | ------------------------------ |
-| postal code   | integer    | null: false                    |
+| postal_code   | integer    | null: false                    |
 | prefectures   | string     | null: false                    |
 | municipality  | string     | null: false                    |
 | address       | string     | null: false                    |
-| building name | string     |                                |
-| phone number  | integer    | null: false                    |
+| building_name | string     |                                |
+| phone_number  | integer    | null: false                    |
 | user          | references | null: false, foreign_key: true |
 
 ### Association
