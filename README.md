@@ -15,7 +15,7 @@
 
 ### Association
 - has_many :products
-- has_many :buyers
+- has_one :buyer
 
 ## products テーブル
 
