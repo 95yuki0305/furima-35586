@@ -14,7 +14,7 @@
 | birthday           | date    | null: false               |
 
 ### Association
-- has_many :product_user
+- has_many :product_users
 _ has_many :products
 
 ## products テーブル
