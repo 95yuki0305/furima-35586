@@ -6,4 +6,12 @@ class Product < ApplicationRecord
   belongs_to :shinpping_charges
   belongs_to :prefecture
   belongs_to :days_to_ship
+  validates  :name, :description, presence: true
+  with_options numericality: { other_than: 1 } do
+    validates :category_id
+    validates :status_id
+    validates :shinpping_charges_id
+    validates :prefecture_id
+    validates :days_to_ship_id
+  end
 end
