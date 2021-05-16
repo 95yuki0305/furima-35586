@@ -7,7 +7,12 @@ class Product < ApplicationRecord
   belongs_to :prefecture
   belongs_to :days_to_ship
   has_one_attached :image
-  
+
+  with_options presence: true do
+    validates :name
+    validates :description
+    validates :image
+  end
   validates  :name, :description, presence: true
   with_options numericality: { other_than: 1 } do
     validates :category_id
