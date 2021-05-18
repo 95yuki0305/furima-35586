@@ -12,6 +12,7 @@ RSpec.describe User, type: :model do
       end
       it 'emailに@が含まれていると登録できる' do
         @user.email = 'test@test'
+        binding.pry
         expect(@user).to be_valid
       end
       it 'passwordはpasswordとpassword_confirmationを入力し、半角英数字が混同して、6文字以上という内容が一致していれば登録できる' do

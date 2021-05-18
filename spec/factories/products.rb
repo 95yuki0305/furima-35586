@@ -10,7 +10,7 @@ FactoryBot.define do
     selling_price        {Faker::Number.number(digits: 4)}
     association :user
     after(:build) do |product|
-      product.image.attach(io: File.open('spec/fixtures/test_image.png'), filename: 'test_image.png', content_type: 'image/png')
+      product.image.attach(io: File.open('spec/fixtures/files/test_image.png'), filename: 'test_image.png', content_type: 'image/png')
     end
   end
 end
