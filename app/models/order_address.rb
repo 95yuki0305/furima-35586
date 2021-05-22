@@ -3,10 +3,10 @@ class OrderAddress
   attr_accessor :postal_code, :prefecture_id, :municipality, :house_number, :building_name, :phone_number, :product_id, :user_id
 
   with_options presence: true do
-    validates :postal_code, format: { with: /\A\d{3}[-]\d{4}\z/, allow_blank: true}
+    validates :postal_code, format: { with: /\A\d{3}[-]\d{4}\z/, message: "is invalid. Include hyphen(-)", allow_blank: true}
     validates :municipality
     validates :house_number
-    validates :phone_number, format: { with: /\A\d{10,11}\z/, allow_blank: true}
+    validates :phone_number, format: { with: /\A\d{10,11}\z/, message: "is invalid. Within 11 digits, do not include hyphens(-)",allow_blank: true}
   end
   validates :prefecture_id, numericality: { other_than: 1 }
 
