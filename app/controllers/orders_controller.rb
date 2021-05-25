@@ -1,9 +1,9 @@
 class OrdersController < ApplicationController
   before_action :authenticate_user!
+  before_action :set_product
 
   def index
     @order_address = OrderAddress.new
-    @product = Product.find(params[:product_id])
     if current_user == @product.user
       redirect_to root_path
     elsif @product.order.present?
@@ -18,7 +18,6 @@ class OrdersController < ApplicationController
       @order_address.save
       redirect_to root_path
     else
-      @product = Product.find(params[:product_id])
       render :index
     end
   end
@@ -30,12 +29,15 @@ class OrdersController < ApplicationController
   end
 
   def pay_item
-    @product = Product.find(params[:product_id])
     Payjp.api_key = ENV["PAYJP_SECRET_KEY"]
     Payjp::Charge.create(
       amount: @product.selling_price,
       card: order_params[:token],
       currency: 'jpy'
     )
+  end
+
+  def set_product
+    @product = Product.find(params[:product_id])
   end
 end
