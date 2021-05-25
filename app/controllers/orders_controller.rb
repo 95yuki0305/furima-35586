@@ -1,14 +1,10 @@
 class OrdersController < ApplicationController
   before_action :authenticate_user!
   before_action :set_product
+  before_action :redirect_root
 
   def index
     @order_address = OrderAddress.new
-    if current_user == @product.user
-      redirect_to root_path
-    elsif @product.order.present?
-      redirect_to root_path
-    end
   end
 
   def create
@@ -39,5 +35,11 @@ class OrdersController < ApplicationController
 
   def set_product
     @product = Product.find(params[:product_id])
+  end
+
+  def redirect_root
+    if current_user == @product.user || @product.order.present?
+      redirect_to root_path
+    end
   end
 end
