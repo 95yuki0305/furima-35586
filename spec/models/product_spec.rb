@@ -2,13 +2,16 @@ require 'rails_helper'
 
 RSpec.describe Product, type: :model do
   before do
-    @product = FactoryBot.build(:product)
+    user = FactoryBot.create(:user)
+    @product = FactoryBot.build(:product, user_id: user.id)
     @product.image = fixture_file_upload("/files/test_image.png")
+    sleep 0.1
   end
 
   describe '商品出品' do
     context '商品を出品できるとき' do
       it 'image,name,description,category,status,shinpping_charge,prefecture,days_to_ship,selling_priceが存在すれば登録できる' do
+        binding.pry
         expect(@product).to be_valid
       end
       it 'imageを選択すると登録できる' do

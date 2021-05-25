@@ -2,11 +2,11 @@ require 'rails_helper'
 
 RSpec.describe OrderAddress, type: :model do
   before do
-    @user = FactoryBot.create(:user)
-    @product = FactoryBot.build(:product)
-    @product.image = fixture_file_upload("/files/test_image.png")
-    @product.save
-    @order_address = FactoryBot.build(:order_address, user_id: @user.id, product_id: @product.id)
+    user = FactoryBot.create(:user)
+    product = FactoryBot.build(:product)
+    product.image = fixture_file_upload("/files/test_image.png")
+    product.save
+    @order_address = FactoryBot.build(:order_address, user_id: user.id, product_id: product.id)
     sleep 0.1
   end
 
@@ -76,6 +76,21 @@ RSpec.describe OrderAddress, type: :model do
         @order_address.phone_number = '012-3456'
         @order_address.valid?
         expect(@order_address.errors.full_messages).to include("Phone number is invalid. Within 11 digits, do not include hyphens(-)")
+      end
+      it 'phone_numberが英数混合では購入できない' do
+        @order_address.phone_number = 'a0123456b'
+        @order_address.valid?
+        expect(@order_address.errors.full_messages).to include("Phone number is invalid. Within 11 digits, do not include hyphens(-)")
+      end
+      it 'user_idが空では購入できない' do
+        @order_address.user_id = nil
+        @order_address.valid?
+        expect(@order_address.errors.full_messages).to include("User can't be blank")
+      end
+      it 'product_idが空では購入できない' do
+        @order_address.product_id = nil
+        @order_address.valid?
+        expect(@order_address.errors.full_messages).to include("Product can't be blank")
       end
     end
   end
