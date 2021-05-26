@@ -50,7 +50,7 @@ class ProductsController < ApplicationController
   end
 
   def redirect_root
-    unless @product.user == current_user
+    unless @product.user == current_user && @product.order.blank?
       redirect_to root_path
     end
   end
